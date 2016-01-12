@@ -1,0 +1,9 @@
+C:\Users\marys\Documents\CSHP810\Exercise1.2\Exercise1.2\bin\Debug\Exercise1.2.exe.config
+C:\Users\marys\Documents\CSHP810\Exercise1.2\Exercise1.2\bin\Debug\Exercise1.2.exe
+C:\Users\marys\Documents\CSHP810\Exercise1.2\Exercise1.2\bin\Debug\Exercise1.2.pdb
+C:\Users\marys\Documents\CSHP810\Exercise1.2\Exercise1.2\obj\Debug\Exercise1.2.csprojResolveAssemblyReference.cache
+C:\Users\marys\Documents\CSHP810\Exercise1.2\Exercise1.2\obj\Debug\Exercise1.2.exe
+C:\Users\marys\Documents\CSHP810\Exercise1.2\Exercise1.2\obj\Debug\Exercise1.2.pdb
+C:\Users\marys\Documents\UW_CSHP810\Exercise1.2\Exercise1.2\bin\Debug\Exercise1.2.exe.config
+C:\Users\marys\Documents\UW_CSHP810\Exercise1.2\Exercise1.2\obj\Debug\Exercise1.2.exe
+C:\Users\marys\Documents\UW_CSHP810\Exercise1.2\Exercise1.2\obj\Debug\Exercise1.2.pdb
