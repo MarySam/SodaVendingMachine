@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-//Exercise 2.1 and 2.2
+//Exercise 3.1 and 3.2
 //Author:  Sam, Mary
 
 namespace SodaVendingMachine
@@ -20,11 +20,12 @@ namespace SodaVendingMachine
             CanRack rack = new CanRack();
             PurchasePrice myPrice = new PurchasePrice(35);
 
-            Console.Write("Please insert {0} cents into the machine", myPrice.Price);
+            Console.Write("Please insert {0} cents into the machine ", myPrice.Price);
             Console.ReadLine();
 
-            rack.RemoveACanOf("Orange");
-            Console.WriteLine("Dispensed 1 can of Orange Soda");
+            rack.RemoveACanOf(Flavor.orange);
+            Console.WriteLine("Dispensed 1 can of {0} Soda", Flavor.orange);
+            Console.ReadLine();
         }
     }
 }
