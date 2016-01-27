@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-//Exercise 3.1 and 3.2
+//Exercise 4.1 and 4.2
 //Author:  Sam, Mary
 
 
@@ -15,13 +15,12 @@ namespace SodaVendingMachine
     {
         private int[] quantities;
 
-        private string[] flavors;
-
         //Constructor for a can rack. The rack starts out full.
         public CanRack()
         {
-            this.quantities = new int[3];
-            this.flavors = new string[] { "Regular", "Orange", "Lemon" };
+            //Gives us the size of the array.
+            this.quantities = new int[Enum.GetValues(typeof(Flavor)).Length];
+            
             this.FillTheCanRack();
         }
 
@@ -100,14 +99,11 @@ namespace SodaVendingMachine
 
         private int GetBinIndex(string flavorOfCan)
         {
-            for (int i = 0; i < this.flavors.Length; i++)
-            {
-                if (string.Equals(flavorOfCan, this.flavors[i], StringComparison.OrdinalIgnoreCase))
-                {
-                    return i;
-                }
-            }
-            return -1;
+            //Converts the string representation of the name or numeric value of 
+            //one or more enumerated constants to an equivalent enumerated object. 
+            Flavor FlavorValue = (Flavor)Enum.Parse(typeof(Flavor), flavorOfCan);
+            //Casting an enum into an int.
+            return (int)FlavorValue;
         }
     }
 }

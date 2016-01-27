@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//Exercise 3.1 and 3.2
+//Exercise 4.1 and 4.2
 //Author:  Sam, Mary
 
 namespace SodaVendingMachine
