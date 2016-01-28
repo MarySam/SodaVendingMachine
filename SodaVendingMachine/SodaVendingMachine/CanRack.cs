@@ -18,10 +18,17 @@ namespace SodaVendingMachine
         //Constructor for a can rack. The rack starts out full.
         public CanRack()
         {
-            //Gives us the size of the array.
+            //Gives us an array based on the size of the enum.
             this.quantities = new int[Enum.GetValues(typeof(Flavor)).Length];
-            
+
             this.FillTheCanRack();
+        }
+
+        //Method that gets the number of cans.
+        public int GetNumberOfCans(String FlavorofCan)
+        {
+            int binIndex = GetBinIndex(FlavorofCan);
+            return this.quantities[binIndex];
         }
 
         public void AddACanOf(string FlavorOfCanToBeAdded)
@@ -97,11 +104,22 @@ namespace SodaVendingMachine
             this.IsEmpty(FlavorOfBinToCheck.ToString());
         }
 
+        //Method to display the Flavor and Quantity of Cans
+        public void DisplayCanRack()
+        {
+            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+            {
+                int QuantityOfFlavor = this.GetNumberOfCans(flavorName);
+                Console.WriteLine("Flavor: {0} Inventory: {1}", flavorName, QuantityOfFlavor);
+            }
+
+        }
+
         private int GetBinIndex(string flavorOfCan)
         {
             //Converts the string representation of the name or numeric value of 
             //one or more enumerated constants to an equivalent enumerated object. 
-            Flavor FlavorValue = (Flavor)Enum.Parse(typeof(Flavor), flavorOfCan);
+            Flavor FlavorValue = (Flavor)Enum.Parse(typeof(Flavor), flavorOfCan,true);
             //Casting an enum into an int.
             return (int)FlavorValue;
         }

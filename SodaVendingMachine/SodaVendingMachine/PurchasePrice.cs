@@ -22,7 +22,7 @@ namespace SodaVendingMachine
         //Constructor to allow the user to set the new purchase price.
         public PurchasePrice(int initialPrice)
         {
-            this.DecimalPrice = initialPrice;
+            this.Price = initialPrice;
         }
 
         //Property to get and set the value of the purchase price.
@@ -30,12 +30,11 @@ namespace SodaVendingMachine
         {
             get
             {
-                return (int)decimalPrice;
-
+                return (int)(decimalPrice * 100M);
             }
             set
             {
-                this.decimalPrice = value;
+                this.decimalPrice = value / 100M;
             }
         }
 

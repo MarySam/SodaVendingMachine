@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SodaVendingMachine
 {
-    public enum Flavor { regular, orange, lemon};
+    public enum Flavor { Regular, Orange, Lemon};
 
     class Can
     {
-        public readonly Flavor TheFlavor = Flavor.regular;
+        public readonly Flavor TheFlavor = Flavor.Regular;
 
         //Default constructor.
         public Can ()
