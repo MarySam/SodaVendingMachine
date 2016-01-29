@@ -31,35 +31,42 @@ namespace SodaVendingMachine
                         rack.DisplayCanRack();
                         Console.Write("\nPlease enter the Flavor you would like: ");
                         string UserFlavorInput = Console.ReadLine();
-                        if (!rack.IsEmpty(UserFlavorInput))
+
+                        if (Enum.IsDefined(typeof(Flavor), UserFlavorInput))
                         {
-                            Console.Write("Please insert {0:C} into the machine ", myPrice.DecimalPrice);
-                            decimal Total = 0;
-
-                            while (Total < myPrice.DecimalPrice)
+                            if (!rack.IsEmpty(UserFlavorInput))
                             {
-                                string CoinString = Console.ReadLine();
-                                Coin CoinInput = new Coin(CoinString.ToUpper());
-                                Total = Total + CoinInput.ValueOf;
-                                Console.WriteLine("You inserted a {0}. Your total is {1}", CoinInput, Total);
-                            }
+                                Console.Write("Please insert {0:C} into the machine ", myPrice.DecimalPrice);
+                                decimal Total = 0;
 
-                            rack.RemoveACanOf(UserFlavorInput);
-                            Console.WriteLine("Dispensed 1 can of {0} Soda", UserFlavorInput);
-                            Console.ReadLine();
-                            continue;
+                                while (Total < myPrice.DecimalPrice)
+                                {
+                                    string CoinString = Console.ReadLine();
+                                    Coin CoinInput = new Coin(CoinString.ToUpper());
+                                    Total = Total + CoinInput.ValueOf;
+                                    Console.WriteLine("You inserted a {0}. Your total is {1}", CoinInput, Total);
+                                }
+
+                                rack.RemoveACanOf(UserFlavorInput);
+                                Console.WriteLine("Dispensed 1 can of {0} Soda", UserFlavorInput);
+                                Console.ReadLine();
+                                continue;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Sorry, we are out of {0}", UserFlavorInput);
+                                continue;
+                            }
+                        }
+                        if (convertedUserValue == 2)
+                        {
+                            break;
                         }
                         else
                         {
-                            Console.WriteLine("Sorry, we are out of {0}", UserFlavorInput);
-                            continue;
+                            Console.WriteLine("Sorry, we don't have that Flavor {0}", UserFlavorInput);
                         }
                     }
-                    if (convertedUserValue == 2)
-                    {
-                        break;
-                    }
-
                     else
                     {
                         Console.WriteLine("Sorry, that is not a valid option");
