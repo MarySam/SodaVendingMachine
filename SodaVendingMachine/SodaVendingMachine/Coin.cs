@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Exercise 4.1 and 4.2
+//Author:  Sam, Mary
+
 namespace SodaVendingMachine
 {
     class Coin

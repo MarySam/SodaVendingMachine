@@ -46,9 +46,11 @@ namespace SodaVendingMachine
 
         public void RemoveACanOf(string FlavorOfCanToBeRemoved)
         {
-            Debug.WriteLine("Removing a can of {0}", (object)FlavorOfCanToBeRemoved);
-            int binIndex = GetBinIndex(FlavorOfCanToBeRemoved);
-            this.quantities[binIndex]--;
+            {
+                Debug.WriteLine("Removing a can of {0}", (object)FlavorOfCanToBeRemoved);
+                int binIndex = GetBinIndex(FlavorOfCanToBeRemoved);
+                this.quantities[binIndex]--;
+            }
         }
 
         //Overloaded method with flavor parameter.
