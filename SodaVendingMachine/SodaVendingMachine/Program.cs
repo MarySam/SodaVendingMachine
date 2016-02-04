@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-//Exercise 4.1 and 4.2
+//Exercise 5.1, 5.2, 5.3, 5.4
 //Author:  Sam, Mary
 
 namespace SodaVendingMachine
@@ -14,10 +14,16 @@ namespace SodaVendingMachine
     {
         static void Main(string[] args)
         {
+            CanRack sodaRack = new CanRack();
+            CoinBox changeBox = new CoinBox(new List<Coin> {
+                new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME),
+                new Coin(Coin.Denomination.NICKEL), new Coin(Coin.Denomination.QUARTER),
+                new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME) });
+
             Console.WriteLine("******Welcome to the .NET Soda Vending Machine******");
             CanRack rack = new CanRack();
             PurchasePrice myPrice = new PurchasePrice(100);
-
+          
             while (true)
             {
                 Console.WriteLine("Enter '1' to purchase a soda.\nEnter '2' to exit");
@@ -32,9 +38,11 @@ namespace SodaVendingMachine
                         Console.Write("\nPlease enter the Flavor you would like: ");
                         string UserFlavorInput = Console.ReadLine();
 
-                        if (Enum.IsDefined(typeof(Flavor), UserFlavorInput))
+                        try
                         {
-                            if (!rack.IsEmpty(UserFlavorInput))
+                            Flavor UserFlavor = FlavorOps.ToFlavor(UserFlavorInput);
+
+                            if (!rack.IsEmpty(UserFlavor))
                             {
                                 Console.Write("Please insert {0:C} into the machine ", myPrice.DecimalPrice);
                                 decimal Total = 0;
@@ -47,49 +55,32 @@ namespace SodaVendingMachine
                                     Console.WriteLine("You inserted a {0}. Your total is {1}", CoinInput, Total);
                                 }
 
-                                rack.RemoveACanOf(UserFlavorInput);
-                                Console.WriteLine("Dispensed 1 can of {0} Soda", UserFlavorInput);
+                                rack.RemoveACanOf(UserFlavor);
+                                Console.WriteLine("Dispensed 1 can of {0} Soda", UserFlavor);
                                 Console.ReadLine();
                                 continue;
                             }
                             else
                             {
-                                Console.WriteLine("Sorry, we are out of {0}", UserFlavorInput);
+                                Console.WriteLine("Sorry, we are out of {0}", UserFlavor);
                                 continue;
                             }
                         }
-                        if (convertedUserValue == 2)
+                        catch
                         {
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Sorry, we don't have that Flavor {0}", UserFlavorInput);
+                            Console.WriteLine("Please try again and type in a valid flavor");
                         }
                     }
-                    else
+                    if (convertedUserValue == 2)
                     {
-                        Console.WriteLine("Sorry, that is not a valid option");
+                        break;
                     }
                 }
+                else
+                {
+                    Console.WriteLine("Sorry, that is not a valid option");
+                }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }

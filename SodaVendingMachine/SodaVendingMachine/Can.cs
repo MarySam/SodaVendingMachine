@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//Exercise 4.1 and 4.2
+//Exercise 5.1, 5.2, 5.3, 5.4
 //Author:  Sam, Mary
 
 namespace SodaVendingMachine
 {
-    public enum Flavor { Regular, Orange, Lemon};
+    public enum Flavor { Regular, Orange, Lemon };
 
     class Can
     {
         public readonly Flavor TheFlavor = Flavor.Regular;
 
         //Default constructor.
-        public Can ()
+        public Can()
         {
 
         }
 
         //Constructor that accepts Flavor as a parameter.
-        public Can (Flavor AFlavor)
+        public Can(Flavor AFlavor)
         {
             TheFlavor = AFlavor;
         }
