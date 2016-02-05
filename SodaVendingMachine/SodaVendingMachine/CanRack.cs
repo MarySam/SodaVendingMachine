@@ -105,6 +105,7 @@ namespace SodaVendingMachine
         }
 
         //Method to display the Flavor and Quantity of Cans
+        //console.writeline should eventually be moved.
         public void DisplayCanRack()
         {
             foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
