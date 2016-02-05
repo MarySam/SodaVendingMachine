@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-//Exercise 4.1 and 4.2
+//Exercise 5.1, 5.2, 5.3, 5.4
 //Author:  Sam, Mary
 
 
@@ -13,116 +13,71 @@ namespace SodaVendingMachine
 {
     class CanRack
     {
-        private int[] quantities;
+        //Declaring our variable rack.
+        private Dictionary<Flavor, int> rack = null;
 
         //Constructor for a can rack. The rack starts out full.
         public CanRack()
         {
-            //Gives us an array based on the size of the enum.
-            this.quantities = new int[Enum.GetValues(typeof(Flavor)).Length];
-
+            //Instantiate the rack Dictionary
+            this.rack = new Dictionary<Flavor, int>();
             this.FillTheCanRack();
         }
 
-        //Method that gets the number of cans.
-        public int GetNumberOfCans(String FlavorofCan)
+        public int GetNumberOfCans(Flavor FlavorofCan)
         {
-            int binIndex = GetBinIndex(FlavorofCan);
-            return this.quantities[binIndex];
+            return this.rack[FlavorofCan];
         }
 
-        public void AddACanOf(string FlavorOfCanToBeAdded)
-        {
-            Debug.WriteLine("Adding a can of {0}", (object)FlavorOfCanToBeAdded);
-            int binIndex = GetBinIndex(FlavorOfCanToBeAdded);
-            this.quantities[binIndex]++;
-        }
-
-        //Overloaded method with flavor parameter.
         public void AddACanOf(Flavor FlavorOfCanToBeAdded)
         {
-            this.AddACanOf(FlavorOfCanToBeAdded.ToString());
+            Debug.WriteLine("Adding a can of {0}", (object)FlavorOfCanToBeAdded);
+            this.rack[FlavorOfCanToBeAdded]++;
         }
 
-        public void RemoveACanOf(string FlavorOfCanToBeRemoved)
-        {
-            Debug.WriteLine("Removing a can of {0}", (object)FlavorOfCanToBeRemoved);
-            int binIndex = GetBinIndex(FlavorOfCanToBeRemoved);
-            this.quantities[binIndex]--;
-        }
-
-        //Overloaded method with flavor parameter.
         public void RemoveACanOf(Flavor FlavorOfCanToBeRemoved)
         {
-            this.RemoveACanOf(FlavorOfCanToBeRemoved.ToString());
+            Debug.WriteLine("Removing a can of {0}", (object)FlavorOfCanToBeRemoved);
+            this.rack[FlavorOfCanToBeRemoved]--;
         }
 
         public void FillTheCanRack()
         {
             Debug.WriteLine("Filling the Rack");
-            this.quantities[0] = 3;
-            this.quantities[1] = 3;
-            this.quantities[2] = 3;
+            this.rack[Flavor.Regular] = 3;
+            this.rack[Flavor.Orange] = 3;
+            this.rack[Flavor.Lemon] = 3;
         }
 
-        public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
-        {
-            Debug.WriteLine("Emptying a bin of {0}", (object)FlavorOfBinToBeEmptied);
-            int binIndex = GetBinIndex(FlavorOfBinToBeEmptied);
-            this.quantities[binIndex] = 0;
-        }
-
-        //Overloaded method with flavor parameter.
         public void EmptyCanRackOf(Flavor FlavorOfBinToBeEmptied)
         {
-            this.RemoveACanOf(FlavorOfBinToBeEmptied.ToString());
+            Debug.WriteLine("Emptying a bin of {0}", (object)FlavorOfBinToBeEmptied);
+            this.rack[FlavorOfBinToBeEmptied] = 0;
         }
 
-        public bool IsFull(string FlavorOfBinToCheck)
+        public bool IsFull(Flavor FlavorOfBinToCheck)
         {
             Debug.WriteLine("Checking whether bin of {0} is full", (object)FlavorOfBinToCheck);
-            int binIndex = GetBinIndex(FlavorOfBinToCheck);
-            return this.quantities[binIndex] > 2;
+            return this.rack[FlavorOfBinToCheck] > 2;
         }
 
-        //Overloaded method with flavor parameter.
-        public void IsFull(Flavor FlavorOfBinToCheck)
-        {
-            this.IsFull(FlavorOfBinToCheck.ToString());
-        }
-
-        public bool IsEmpty(string FlavorOfBinToCheck)
+        public bool IsEmpty(Flavor FlavorOfBinToCheck)
         {
             Debug.WriteLine("Checking whether bin of {0} is empty", (object)FlavorOfBinToCheck);
-            int binIndex = GetBinIndex(FlavorOfBinToCheck);
-            return this.quantities[binIndex] < 1;
-        }
-
-        //Overloaded method with flavor parameter.
-        public void IsEmpty(Flavor FlavorOfBinToCheck)
-        {
-            this.IsEmpty(FlavorOfBinToCheck.ToString());
+            return this.rack[FlavorOfBinToCheck] < 1;
         }
 
         //Method to display the Flavor and Quantity of Cans
         //console.writeline should eventually be moved.
         public void DisplayCanRack()
         {
-            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+            foreach (Flavor aFlavor in FlavorOps.AllFlavors)
             {
-                int QuantityOfFlavor = this.GetNumberOfCans(flavorName);
-                Console.WriteLine("Flavor: {0} Inventory: {1}", flavorName, QuantityOfFlavor);
+                int QuantityOfFlavor = this.rack[aFlavor];
+                Console.WriteLine("Flavor: {0} Inventory: {1} ", aFlavor, QuantityOfFlavor);
             }
 
         }
 
-        private int GetBinIndex(string flavorOfCan)
-        {
-            //Converts the string representation of the name or numeric value of 
-            //one or more enumerated constants to an equivalent enumerated object. 
-            Flavor FlavorValue = (Flavor)Enum.Parse(typeof(Flavor), flavorOfCan,true);
-            //Casting an enum into an int.
-            return (int)FlavorValue;
-        }
     }
 }
