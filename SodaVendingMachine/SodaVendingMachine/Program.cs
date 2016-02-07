@@ -35,6 +35,7 @@ namespace SodaVendingMachine
                     {
                         Console.WriteLine("Here is what we have in store");
                         rack.DisplayCanRack();
+                        
                         Console.Write("\nPlease enter the Flavor you would like: ");
                         string UserFlavorInput = Console.ReadLine();
 
