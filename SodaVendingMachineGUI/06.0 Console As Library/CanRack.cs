@@ -80,6 +80,15 @@ namespace _06._0_Console_As_Library
             }
         }
 
+        public void FillOneCanRack(Flavor OneFlavor)
+        {
+            Debug.WriteLine("Filling the can rack");
+            {
+                rack[OneFlavor] = BINSIZE;
+            }
+        }
+
+
         //  This public void will empty the rack of a given flavor.
         public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
         {
@@ -179,19 +188,17 @@ namespace _06._0_Console_As_Library
         }
 
 
-        // write out the contents of rack array. For example, one flavor per line with the flavor name and
-        // the number of cans of soda of that flavor. In a real system, this function would probably be in a 
-        // separate class, and the CanRack would export this information as strings. We’re doing it this way
+        //write out the contents of rack array.For example, one flavor per line with the flavor name and
+        // the number of cans of soda of that flavor.In a real system, this function would probably be in a
+        //separate class, and the CanRack would export this information as strings.We’re doing it this way
         // for the sake of the simplicity of the exercise.
         public void DisplayCanRack()
         {
-            Console.WriteLine(".NET C# Vending Machine contents");
-            Console.WriteLine("________________________________");
             foreach (Flavor aFlavor in FlavorOps.AllFlavors)
             {
-                Console.WriteLine("{0}\t{1}", aFlavor, rack[aFlavor]);
+                int QuantityOfFlavor = this.rack[aFlavor];
+                Console.WriteLine("Flavor: {0} Inventory: {1} ", aFlavor, QuantityOfFlavor);
             }
-            Console.WriteLine("________________________________");
         }
 
     } //end Can_Rack
