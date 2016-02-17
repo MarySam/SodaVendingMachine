@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+// Exercise: 7
+// Author:  Sam, Mary
+
 namespace _06._0_Console_As_Library
 {
     public class Coin

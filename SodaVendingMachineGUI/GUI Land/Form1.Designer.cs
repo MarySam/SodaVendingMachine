@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Regular",
             "3"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Orange",
             "3"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Lemon",
             "3"}, -1);
             this.insertmoney = new System.Windows.Forms.Label();
@@ -55,6 +55,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.servicenotebutton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.emptyinsertedcoinbox = new System.Windows.Forms.Button();
@@ -263,6 +264,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.servicenotebutton);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -272,6 +274,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Service";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // servicenotebutton
+            // 
+            this.servicenotebutton.Location = new System.Drawing.Point(99, 332);
+            this.servicenotebutton.Name = "servicenotebutton";
+            this.servicenotebutton.Size = new System.Drawing.Size(175, 39);
+            this.servicenotebutton.TabIndex = 3;
+            this.servicenotebutton.Text = "Service Note";
+            this.servicenotebutton.UseVisualStyleBackColor = true;
+            this.servicenotebutton.Click += new System.EventHandler(this.servicenotebutton_Click);
             // 
             // groupBox2
             // 
@@ -405,13 +418,13 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listView1.GridLines = true;
-            listViewItem10.StateImageIndex = 0;
-            listViewItem11.StateImageIndex = 0;
-            listViewItem12.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
+            listViewItem2.StateImageIndex = 0;
+            listViewItem3.StateImageIndex = 0;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem10,
-            listViewItem11,
-            listViewItem12});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3});
             this.listView1.Location = new System.Drawing.Point(64, 19);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(159, 106);
@@ -486,6 +499,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button servicenotebutton;
     }
 }
 

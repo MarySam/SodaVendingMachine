@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-// Exercise: 6.1 and 6.2
+// Exercise: 7
 // Author:  Sam, Mary
 
 namespace GUI_Land
@@ -198,6 +198,17 @@ namespace GUI_Land
         {
             insertedCoin.Withdraw(insertedCoin.ValueOf);
             updateServiceViews();
+        }
+
+        private void servicenotebutton_Click(object sender, EventArgs e)
+        {
+            Form2 serviceContainer = new Form2();
+            serviceContainer.Show();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
